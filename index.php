@@ -1,33 +1,50 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
 
-// Definir arrays de caracteres
-$uppercase = range('A', 'Z'); // Letras mayúsculas
-$lowercase = range('a', 'z'); // Letras minúsculas
-$numbers = range(0, 9);       // Números
-$specialCharacters = ['@', '#', '$', '%', '&', '*', '!', '?', '-', '_', '+', '='];
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Genarator</title>
+</head>
 
-function passwordGenerator(int $numberChars, array $allowedChars) : string
-{
+<body>
+    <main>
+        <div class="container">
+            <div class="title"></div>
+            <div class="contain">
+                <form action="./logic/process-form.php" method="post">
+                    <input type="number" placeholder="Cantidad de Caracteres" required value="12" name="charsNumbers" id="charsNumbers">
+                    <div>
+                        <p>¿Qué caracteres permitirá?</p>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="chars[]" value="uppercase"> A - Z
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="chars[]" value="lowercase"> a - z
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="chars[]" value="numbers"> 1 - 9
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" name="chars[]" value="special"> Caracteres Extraños
+                            </label>
+                        </div>
+                    </div>
+                    <div class="submit-container" >
+                        <input type="submit" class="submit-btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
 
-    if ($numberChars > 30 and $numberChars < 1 ) {
-        throw new InvalidArgumentException("Cantidad de caracteres no permitida");
-    }
-
-    if(empty($allowedChars)){
-        throw new InvalidArgumentException("El array de caracteres permitidos no puede estar vacío");
-    }
-
-    $generatedPassword = ''; 
-
-    for($i = 0;$i < $numberChars; $i++) {
-        $randomIndex = array_rand($allowedChars);
-        $generatedPassword .= $allowedChars[$randomIndex];
-    }
-
-    return $generatedPassword;
-    
-}
-
-$allowedCharsArray = array_merge($uppercase, $numbers, $lowercase, ['@', '#', '$']);
-
-print_r(passwordGenerator(29, $allowedCharsArray));
+</html>
