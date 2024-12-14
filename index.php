@@ -4,17 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Genarator</title>
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
     <main>
         <div class="container">
-            <div class="title"></div>
+            <div class="title">
+                <h1>
+                    Genera tu contraseña de manera aleatoria
+                </h1>
+            </div>
             <div class="contain">
                 <form action="./logic/process-form.php" method="post">
-                    <input type="number" placeholder="Cantidad de Caracteres" required value="12" name="charsNumbers" id="charsNumbers">
-                    <div>
+                    <input 
+                        type="number" 
+                        placeholder="Cantidad de Caracteres"
+                        name="charsNumbers" 
+                        id="charsNumbers"
+                        class="input-number"
+                        required 
+                    >
+                    <div class="checkbox-container">
                         <p>¿Qué caracteres permitirá?</p>
                         <div>
                             <label>
@@ -37,8 +49,8 @@
                             </label>
                         </div>
                     </div>
-                    <div class="submit-container" >
-                        <input type="submit" class="submit-btn">
+                    <div class="submit-container">
+                        <input type="submit" value="Generar Contraseña" class="submit-btn">
                     </div>
                 </form>
             </div>
